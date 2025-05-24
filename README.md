@@ -1,4 +1,4 @@
-# 🌧️ SkyCast – AI Rain Prediction System
+# 🌧️ AI Rain Prediction System
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://rain-prediction-hassan.streamlit.app)
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1IOTvmV9shwADEn4MpHCY1JALo_yadPo7?usp=sharing)
