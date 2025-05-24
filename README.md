@@ -1,76 +1,92 @@
-# Rain Prediction Project - Team SkyCast
+# 🌧️ SkyCast – Rain Prediction System using AI
 
-## Project Overview
-The Rain Prediction Project aims to build an intelligent model capable of predicting whether it will rain tomorrow based on real-world weather data collected from Australian weather stations.  
-The project leverages machine learning techniques to analyze various meteorological features such as temperature, humidity, wind speed, air pressure, and more, in order to make accurate predictions that assist in weather forecasting.
+A capstone project from the **DEPI Data Science Scholarship**  
+Built by a 6-member team under the supervision of Eng. Heba Mohamed  
+**Led and managed by Hassan Abdul-Razeq (Team Leader)**
 
+---
 
-## Project Goal / Problem Statement
+## 🔍 Overview
 
-Many individuals and sectors rely on weather forecasts for daily or operational decision-making, including:
+This project answers a practical and critical question:  
+**Can we predict if it will rain tomorrow?**
 
-- **Individuals**: Planning their day, choosing appropriate clothing, or deciding whether to carry an umbrella.
-- **Agriculture**: Scheduling irrigation and harvesting.
-- **Transportation**: Minimizing risks caused by weather conditions
+Accurate rain prediction enables:
+- Better planning for farmers, logistics, and transportation
+- Early warning systems to reduce losses
+- Improved public safety and awareness
 
-### Our main goal is:
-To build a smart system that predicts whether it will rain tomorrow based on today’s weather data.
+---
 
-## Dataset
-The dataset used for this project is the **"Rain in Australia"** dataset, sourced from Kaggle. It contains daily weather observations from various weather stations across Australia, spanning several years.
+## 📊 Dataset Information
 
-**Key Features:**
-- Over 140,000 records with 23 meteorological variables, including:
-  - Date, Location, Min/Max Temperature, Rainfall, Evaporation, Sunshine
-  - Wind Gust Speed/Direction, Humidity, Pressure, Cloud Cover
-  - RainToday (whether it rained today), RainTomorrow (target variable)
-- The target variable, `RainTomorrow`, indicates whether it will rain the next day (Yes/No).
+- **Source:** Kaggle – Rain in Australia  
+- **Filename:** `weatherAUS.csv`  
+- **Entries:** ~145,000 records  
+- **Main Features:** Date, Location, MinTemp, MaxTemp, Rainfall, Humidity, WindSpeed, etc.  
+- **Target Variable:** `RainTomorrow` (Yes/No)
 
+---
 
-**Data Source:**  
-[Kaggle - Rain in Australia](https://www.kaggle.com/datasets/jsphyg/weather-dataset-rattle-package)
+## 🔧 Steps Implemented
 
-This dataset provides a comprehensive basis for training and evaluating machine learning models for rain prediction.
+### 🧪 Exploratory Data Analysis (EDA)
+- Visualized rainfall by city, season, temperature & humidity
+- Checked feature correlations
+- Identified class imbalance and outliers
 
+### 🧹 Data Cleaning & Preprocessing
+- Handled missing values using:
+  - `KNNImputer` for numerical features
+  - Mode for categorical features
+- Treated outliers using the IQR method
+- Encoded categorical variables (Label & OneHot)
+- Applied `MinMaxScaler` for feature scaling
 
-## How to Run the Project Locally
+### ⚙️ Feature Engineering
+- Created new features:
+  - `TempDiff = MaxTemp - MinTemp`
+  - `HumidityDiff`, `WindSpeedAvg`, etc.
+- Extracted Day, Month, and Year from Date column
 
-Follow the steps below to run the Rain Prediction app on your local machine:
+### 🤖 Model Building
+- Train/test split  
+- Trained models:
+  - Decision Tree (baseline)
+  - Random Forest (improved)
+  - XGBoost (best performance)
+- Evaluated using:
+  - Accuracy, Precision, Recall, F1-score, ROC-AUC
+- Used cross-validation & hyperparameter tuning
 
-### 1. Clone the Repository
-```bash
-git clone https://github.com/B-MEbrahim/Rain-Prediction.git
-cd Rain-Prediction
-```
+---
 
-### 2. (Optional) Create and Activate a Virtual Environment
-```bash
-python -m venv env
-```
+## 🧠 Models Used
 
-### 3. Install Required Packages
+| Model           | Role         | Accuracy |
+|----------------|--------------|----------|
+| Decision Tree  | Baseline     | ~72%     |
+| Random Forest  | Improved     | ~79%     |
+| XGBoost        | Final Model  | **~83%** |
+
+- XGBoost performed best: robust to imbalance, missing values & outliers
+- Balanced precision & recall
+
+---
+
+## 🌐 Deployment
+
+An interactive **Streamlit Web App** was built with the following pages:
+
+- `🏠 Home` – Project overview  
+- `📊 Dashboard` – Rain insights and graphs  
+- `☔ Predict Rain` – Enter your data to get prediction  
+- `ℹ️ About` – Team, methodology, documentation
+
+---
+
+## 🚀 How to Run
+
 ```bash
 pip install -r requirements.txt
-```
-
-### 4. Run the Streamlit App
-```bash
 streamlit run app.py
-```
-
--------------
-## Useful Links
-
-- **Kaggle Notebook (EDA & Modeling):**  
-  [https://www.kaggle.com/code/mohamedmahmoud111/rain-prediction-porject](https://www.kaggle.com/code/mohamedmahmoud111/rain-prediction-porject)
-
-- **Live Streamlit App:**  
-  [https://rain-prediction-xynsjsyukgjsyykngqqgqy.streamlit.app/](https://rain-prediction-xynsjsyukgjsyykngqqgqy.streamlit.app/)
-## Team Members
-
-- Hassan Abdelrazek (Team leader)
-- Mahmoud Ebrahim  
-- Mohamed Elseragy
-- Ahmed Fouad  
-- Abdulrhman Hosny  
-- Wageeh Abdelhameed  
